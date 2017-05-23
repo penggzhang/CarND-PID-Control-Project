@@ -29,7 +29,7 @@ Self-Driving Car Engineer Nanodegree Program
 
 ## Reflection
 
-####1. Describe the effect each of the P, I, D components had in your implementation.
+###1. Describe the effect each of the P, I, D components had in your implementation.
 
 Proportional control gives a correction steering based on the cross track error, and thus leads the vehicle to turn to and approach the target track, which is the middle line of the road. However, P control will cause overshoot, waving around or not going converge. To counter such overshoot, differential control based on the temporal difference of cross track error comes into play. D control makes the vehicle gracefully approach target track and converge. Finally, integral control deals with vehicle drift by taking the integral of cross track error to a correction steering.
 
@@ -37,13 +37,16 @@ Proportional control gives a correction steering based on the cross track error,
 
 Again, as seen from the video, P control always brings the vehicle back to the target middle line of the road, D control smooths the turning and make it converge, I control corrects any drift.
 
-####2. Describe how the final hyperparameters were chosen.
+###2. Describe how the final hyperparameters were chosen.
 
-#####1) Guess initial values
+**1) Guess initial values**
+
 First of all, the P control parameter, Kp, is roughly estimated. Given the distance from the edge to center of the road is about 2.2(m),  and the maximum steering angle is 1 or -1 in radian, a Kp around 0.4 (= 1 / 2.2) was guessed. Then manually tried some values for other two parameters through simulations, and correspondly Kd of 5 as well Ki of 0.0001 were guessed too.
 
-#####2) Twiddle to fine tune the parameters
+**2) Twiddle to fine tune the parameters**
+
 Based on an initial guess for Kp, Kd, Ki as 0.35, 5.0, 0.0001 respectively, twiddle method was conducted on the first 1,500 step simulation. Root mean square (cross track) error was chosen as the criterion to compare the goodness of hyperparameters. After nearly 200 iterations, a best RMSE was found at the parameters of Kp = 0.993922, Kd = 11.0414, Ki = 0.00043469. And the best RMSE there was 0.0915366(m).
 
-#####3) Run simulation to verify this optimization
+**3) Run simulation to verify this optimization**
+
 Run the simulation with the fine-tuned parameters. It works and verifies that the optimization work was effective.

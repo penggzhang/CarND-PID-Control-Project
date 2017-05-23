@@ -41,7 +41,7 @@ int main()
     double p[3] = {0.993922, 11.0414, 0.00043469};
     
     // Flag for twiddle. Set as true if do twiddle, otherwise false.
-    bool twiddle_flag = true;
+    bool twiddle_flag = false;
     
     // Number of steps for twiddle.
     // After 1500 steps, the car will go over the bridge.
